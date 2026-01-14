@@ -1,41 +1,59 @@
-NETWORK ANALYSIS TOOL - USER GUIDE
-Version: 1.0
-Author: Student Developer
-Target Audience: Network Administration Team (India Site)
-1. OVERVIEW
-This toolkit allows you to analyze raw tcpdump logs to identify the source of network saturation. It automates data extraction, visualization, and reporting.
-2. PREREQUISITES
-Before running the tools, ensure you have Python 3 installed on your machine. You must install the following libraries:
-Bash
-pip install matplotlib markdown
-3. INSTALLATION
-1. Create a folder named Network_Analysis.
-2. Place the following files inside:
-○ Analyse_Reseau.py (Script 1)
-○ Graphe_Attaque.py (Script 2)
-○ Rapport_Reseau.py (Script 3)
-○ Your log file (e.g., capture.txt)
-4. HOW TO USE (Step-by-Step)
-STEP 1: Data Extraction
-● Goal: Convert the raw text file into a readable CSV format.
-Action: Open a terminal and run: Bash python Analyse_Reseau.py
-●
-● Input: Enter the name of your log file when prompted (e.g., server_logs.txt).
-● Output: The script generates Resultat_Reseau.csv.
-○ Note: You can open this CSV file with Excel for manual verification.
-STEP 2: Visualization
-● Goal: Generate graphs to identify the attacker.
-Action: Run the second script: Bash python Graphe_Attaque.py
-●
-● Output: Two images are created:
-○ Preuve_1_IP_Attaquant.png (Top Talkers)
-○ Preuve_2_Type_Attaque.png (Flag Distribution)
-STEP 3: Reporting
-● Goal: Generate a final HTML report for management.
-Action: Run the final script: Bash python Rapport_Reseau.py
-●
-● Input: Enter the suspicious IP address found in Step 2.
-● Output: Open Rapport_Incident_Reseau.html in your web browser to view the full incident report.
-5. TROUBLESHOOTING
-● Error: "File not found": Ensure your .txt file is in the same folder as the python scripts.
-● Error: "Module not found": Run the pip install command listed in Section 2
+# 🛡️ Network Traffic Analyzer (SAE 1.05)
+
+**Student:** Yacine Bensmail (BUT R&T - IUT de Roanne)
+**Context:** Network investigation for the India production site.
+
+---
+
+## 📋 Project Overview
+This repository contains a set of Python tools designed to analyze raw network logs (`tcpdump` format).
+The goal is to identify the cause of the network saturation reported between the France (Admin) and India (Production) sites.
+
+### Key Features
+* **Data Extraction:** Parses complex text logs into structured CSV files compatible with Excel.
+* **Visualization:** Generates graphs (Bar charts & Pie charts) to spot the attacker immediately.
+* **Reporting:** Creates an automated HTML incident report for management.
+
+---
+
+## 🛠️ Prerequisites
+To run these scripts, you need **Python 3** installed.
+You must also install the following libraries:
+
+> pip install matplotlib markdown pandas openpyxl
+> 
+🚀 How to Use
+Step 1: Analyze the Logs
+
+Run the main script to clean the raw data.
+
+> python Analyse_Reseau.py
+Input: Enter the filename (e.g., fichier1000.txt). Output: A Resultat_Reseau.csv file is created.
+
+Step 2: Generate Evidence (Graphs)
+
+Visualize the traffic to find the suspicious IP.
+
+> python Graphe_Attaque.py
+Output: Generates Preuve_1_IP_Attaquant.png (Top Talkers).
+
+Step 3: Create the Report
+
+Generate the final HTML report.
+
+> python Rapport_Reseau.py
+Input: Enter the suspicious IP found in Step 2. Output: Open Rapport_Incident_Reseau.html in your browser.
+
+📂 Project Structure
+File	Description
+Analyse_Reseau.py	Main parsing script (Python to CSV).
+Graphe_Attaque.py	Visualization script (Matplotlib).
+Rapport_Reseau.py	Reporting tool (Markdown/HTML).
+Conversion_Excel.py	Tool to convert CSV to Excel (.xlsx).
+fichier1000.txt	Sample log file for testing.
+⚠️ Troubleshooting
+File not found: Ensure your .txt log file is in the same folder as the scripts.
+
+Module errors: Run the pip install command listed in Prerequisites.
+
+IUT de Roanne
